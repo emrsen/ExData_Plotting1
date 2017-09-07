@@ -1,0 +1,6 @@
+hpc<-read.csv2("household_power_consumption.txt")
+hpc["Date2"] <- as.Date(hpc$Date,"%d/%m/%Y")
+hpc.sub <- subset(hpc,Date2==as.Date("2007-02-01","%Y-%m-%d")|(Date2==as.Date("2007-02-02","%Y-%m-%d")))
+png(file="Plot1.png",width=480,height=480)
+hist(as.numeric(as.character(hpc.sub$Global_active_power)), main = "Global Active Power", col = "red", xlab = "Global Active Power (kilowatts)")
+dev.off()
